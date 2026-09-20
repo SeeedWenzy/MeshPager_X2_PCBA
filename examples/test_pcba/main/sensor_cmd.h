@@ -1,0 +1,1 @@
+void sensor_cmd_register_all(void);

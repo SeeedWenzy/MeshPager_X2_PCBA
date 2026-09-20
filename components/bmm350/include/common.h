@@ -1,0 +1,210 @@
+/**
+* Copyright (c) 2023 Bosch Sensortec GmbH. All rights reserved.
+*
+* BSD-3-Clause
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*
+* 1. Redistributions of source code must retain the above copyright
+*    notice, this list of conditions and the following disclaimer.
+*
+* 2. Redistributions in binary form must reproduce the above copyright
+*    notice, this list of conditions and the following disclaimer in the
+*    documentation and/or other materials provided with the distribution.
+*
+* 3. Neither the name of the copyright holder nor the names of its
+*    contributors may be used to endorse or promote products derived from
+*    this software without specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+* FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+* COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+* (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+* STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+* IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+* POSSIBILITY OF SUCH DAMAGE.
+*
+* @file  common.h
+*
+*/
+
+#ifndef _COMMON_H
+#define _COMMON_H
+
+/*! CPP guard */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+ #include <stdio.h>
+ #include "bmm350.h"
+
+#include <stdbool.h>
+#include <i2cdev.h>
+#include <esp_err.h>
+
+/***************************************************************************/
+
+/*!                 User function prototypes
+ ****************************************************************************/
+
+/*!
+ *  @brief Function for reading the sensor's registers through I2C bus.
+ *
+ * @param[in] reg_addr       : Register address from which data is read.
+ * @param[out] reg_data      : Pointer to data buffer where read data is stored.
+ * @param[in] length         : Number of bytes of data to be read.
+ * @param[in, out] intf_ptr  : Void pointer that can enable the linking of descriptors
+ *                             for interface related call backs.
+ *
+ *  @return Status of execution
+ *
+ *  @retval BMM350_INTF_RET_SUCCESS -> Success.
+ *  @retval != BMM350_INTF_RET_SUCCESS -> Fail.
+ *
+ */
+BMM350_INTF_RET_TYPE bmm350_i2c_read(uint8_t reg_addr, uint8_t *reg_data, uint32_t length, void *intf_ptr);
+
+/*!
+ *  @brief Function for writing the sensor's registers through I2C bus.
+ *
+ * @param[in] reg_addr      : Register address to which the data is written.
+ * @param[in] reg_data      : Pointer to data buffer in which data to be written
+ *                            is stored.
+ * @param[in] length        : Number of bytes of data to be written.
+ * @param[in, out] intf_ptr : Void pointer that can enable the linking of descriptors
+ *                            for interface related call backs
+ *
+ *  @return Status of execution
+ *
+ *  @retval BMM350_INTF_RET_SUCCESS -> Success.
+ *  @retval != BMM350_INTF_RET_SUCCESS -> Failure.
+ *
+ */
+BMM350_INTF_RET_TYPE bmm350_i2c_write(uint8_t reg_addr, const uint8_t *reg_data, uint32_t length, void *intf_ptr);
+
+/*!
+ * @brief This function provides the delay for required time (Microsecond) as per the input provided in some of the
+ * APIs.
+ *
+ *  @param[in] period_us  : The required wait time in microsecond.
+ *  @return void.
+ *
+ */
+void bmm350_delay(uint32_t period_us, void *intf_ptr);
+
+/*!
+ *  @brief Function to select the interface.
+ *         Also to initialize coines platform.
+ *
+ *  @param[in] dev         : Structure instance of bmm350_dev
+ *
+ *  @return Status of execution
+ *  @retval 0 -> Success
+ *  @retval < 0 -> Failure Info
+ */
+int8_t bmm350_interface_init(struct bmm350_dev *dev);
+
+/*!
+ *  @brief Prints the execution status of the APIs.
+ *
+ *  @param[in] api_name : Name of the API whose execution status has to be printed.
+ *  @param[in] rslt     : Error code returned by the API whose execution status has to be printed.
+ *
+ *  @return void.
+ */
+void bmm350_error_codes_print_result(const char api_name[], int8_t rslt);
+
+/*!
+ * @brief This function deinitializes coines platform
+ *
+ *  @return void.
+ *
+ */
+void bmm350_coines_deinit(void);
+
+/**
+ * @brief Retrieves the state of a button.
+ *
+ * This function is used to get the state of a button specified by `button_id`.
+ *
+ * @param[in] button_id     : ID of the button to retrieve the state from.
+ * @param[in] btn_dir       : Pointer to a variable where the button direction will be stored.
+ * @param[out] btn_value    : Pointer to a variable where the button state will be stored.
+ */
+
+
+ /**
+  * @brief Prints a 48.16 fixed-point value.
+  *
+  * Converts and prints the given 64-bit integer, which represents a value in 48.16 fixed-point format.
+  *
+  * @param raw The 64-bit integer value in 48.16 fixed-point format to be printed.
+  * @return void
+  */
+ void print_A48_16(int64_t raw);
+
+/***************************************************************************/
+/*!                 ESP-IDF Platform Specific Functions                      */
+/***************************************************************************/
+
+/*!
+ * @brief Initialize BMM350 I2C device descriptor for ESP-IDF platform
+ *
+ * This function initializes the I2C device structure with the specified
+ * I2C port and GPIO pins. It follows the same pattern as sht4x_init_desc().
+ *
+ * @param[in] i2c_dev      Pointer to i2c_dev_t structure to initialize
+ * @param[in] port         I2C port number (I2C_NUM_0 or I2C_NUM_1)
+ * @param[in] sda_gpio     SDA GPIO pin number
+ * @param[in] scl_gpio     SCL GPIO pin number
+ * @return ESP_OK on success, error code otherwise
+ */
+esp_err_t bmm350_i2cdev_init(i2c_dev_t *i2c_dev, i2c_port_t port, gpio_num_t sda_gpio, gpio_num_t scl_gpio);
+
+/*!
+ * @brief Free BMM350 I2C device descriptor for ESP-IDF platform
+ *
+ * This function releases resources allocated for the I2C device.
+ * It follows the same pattern as sht4x_free_desc().
+ *
+ * @param[in] i2c_dev      Pointer to i2c_dev_t structure to free
+ * @return ESP_OK on success, error code otherwise
+ */
+esp_err_t bmm350_i2cdev_free(i2c_dev_t *i2c_dev);
+
+/*!
+ * @brief Initialize BMM350 device with ESP-IDF I2C backend
+ *
+ * This is a convenience function that initializes both the BMM350 device
+ * structure and the I2C device descriptor for ESP-IDF platform.
+ *
+ * @param[in,out] dev     Pointer to bmm350_dev structure to initialize
+ * @param[in] port        I2C port number (I2C_NUM_0 or I2C_NUM_1)
+ * @param[in] sda_gpio    SDA GPIO pin number
+ * @param[in] scl_gpio    SCL GPIO pin number
+ * @return BMM350_OK on success, error code otherwise
+ */
+int8_t bmm350_esp_init(struct bmm350_dev *dev, i2c_port_t port, gpio_num_t sda_gpio, gpio_num_t scl_gpio);
+
+/*!
+ * @brief Deinitialize BMM350 device with ESP-IDF I2C backend
+ *
+ * This function releases resources allocated for the BMM350 device.
+ *
+ * @param[in,out] dev     Pointer to bmm350_dev structure to deinitialize
+ * @return BMM350_OK on success, error code otherwise
+ */
+int8_t bmm350_esp_deinit(struct bmm350_dev *dev);
+
+#ifdef __cplusplus
+}
+#endif /* End of CPP guard */
+
+#endif /* _COMMON_H */

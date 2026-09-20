@@ -1,0 +1,1 @@
+void io_expander_cmd_register_all(void);

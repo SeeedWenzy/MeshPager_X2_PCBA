@@ -1,0 +1,1 @@
+void gpio_cmd_register_all(void);

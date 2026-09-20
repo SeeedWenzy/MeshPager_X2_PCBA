@@ -1,0 +1,10 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+# Note: if you change the phy_init or app partition offset, make sure to change the offset in Kconfig.projbuild
+# No model partition: runs with wakenet_init=false and no wake/command words
+# selected, so no SR models are loaded from flash. merge.ps1 does not merge
+# srmodels either. Auto offsets: factory 0x10000 (8M) -> 0x810000,
+# storage 0x810000 (4M) -> 0xC10000 (~12.6 MB).
+nvs,      data, nvs,     0x9000,  0x6000,
+phy_init, data, phy,     0xf000,  0x1000,
+factory,  app,  factory, ,        8M,
+storage,  data, spiffs,  ,        4M,

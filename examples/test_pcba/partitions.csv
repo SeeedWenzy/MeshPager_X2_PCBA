@@ -1,0 +1,16 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+# Note: if you change the phy_init or app partition offset, make sure to change the offset in Kconfig.projbuild
+#
+# No model partition: this firmware uses the esp-sr AFE (AEC/AGC/NS, webrtc)
+# but runs with wakenet_init=false and no wake/command words selected, so no
+# SR models are ever loaded from flash. Dropping the 6000 KB model partition
+# reclaims ~6 MB and shrinks the merged image from ~14 MB to ~8 MB.
+# factory is 4 MB (app is ~1.8 MB). Auto offsets:
+#   factory  0x10000  (4 MB)  -> 0x410000
+#   storage  0x410000 (4 MB)  -> 0x810000   (SPIFFS assets)
+# Highest write ends at 0x810000 = ~8 MB, fits in 16 MB with no address wrap.
+# merge.ps1 flashes storage @ 0x410000 to match.
+nvs,      data, nvs,     0x9000,  0x6000,
+phy_init, data, phy,     0xf000,  0x1000,
+factory,  app,  factory, ,        4M,
+storage,  data, spiffs,  ,        4M,

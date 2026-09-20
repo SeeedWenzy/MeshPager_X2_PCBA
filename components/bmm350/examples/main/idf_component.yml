@@ -1,0 +1,8 @@
+dependencies:
+  esp-idf-lib/esp_idf_lib_helpers:
+    version: '*'
+  esp-idf-lib/i2cdev:
+    version: '*'
+  bmm350:
+    version: "*"
+    override_path: "../../../bmm350"  

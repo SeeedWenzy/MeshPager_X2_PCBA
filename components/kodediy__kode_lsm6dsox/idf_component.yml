@@ -1,0 +1,9 @@
+dependencies:
+  cmake_utilities: 0.*
+  idf: '>=5.0.0'
+description: LSM6DSOX - 6-axis IMU
+issues: https://github.com/kodediy/kode_lsm6dsox/issues
+license: Apache-2.0
+repository: https://github.com/kodediy/kode_lsm6dsox.git
+url: https://github.com/kodediy/kode_lsm6dsox
+version: 1.0.1

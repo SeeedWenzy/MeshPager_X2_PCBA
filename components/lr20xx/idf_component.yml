@@ -1,0 +1,15 @@
+version: 1.0.0
+
+description: Radio driver for LR20xx
+
+targets:
+- esp32s3
+
+dependencies:
+  esp_io_expander_tca6424:
+    path: ../esp_io_expander_tca6424
+  cmake_utilities:
+    version: 0.*
+  idf:
+    version: '>=5.2'
+

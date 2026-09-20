@@ -1,0 +1,246 @@
+dependencies:
+  bsp_extra:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\bsp_extra
+      type: local
+    version: 0.0.1
+  chmorgan/esp-audio-player:
+    component_hash: c8ac1998e9af863bc41b57e592f88d1a5791a0f891485122336ddabbf7a65033
+    dependencies:
+    - name: chmorgan/esp-libhelix-mp3
+      registry_url: https://components.espressif.com
+      require: private
+      version: '>=1.0.0,<2.0.0'
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.0.7
+  chmorgan/esp-file-iterator:
+    component_hash: 327091394b9ef5c2cd395a960ab70ae64479e0a8831cbd9925e38895fad93719
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.0.0
+  chmorgan/esp-libhelix-mp3:
+    component_hash: cbb76089dc2c5749f7b470e2e70aedc44c9da519e04eb9a67d4c7ec275229e53
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1.0'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 1.0.3
+  esp-idf-lib/esp_idf_lib_helpers:
+    component_hash: 689853bb8993434f9556af0f2816e808bf77b5d22100144b21f3519993daf237
+    dependencies: []
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    targets:
+    - esp32
+    - esp32c2
+    - esp32c3
+    - esp32c5
+    - esp32c6
+    - esp32c61
+    - esp32h2
+    - esp32p4
+    - esp32s2
+    - esp32s3
+    version: 1.4.0
+  esp-idf-lib/i2cdev:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\esp-idf-lib__i2cdev
+      type: local
+    version: 2.1.1
+  esp_io_expander:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\esp_io_expander
+      type: local
+    version: 1.0.1
+  esp_io_expander_tca6424:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\esp_io_expander_tca6424
+      type: local
+    version: 1.0.0
+  espressif/button:
+    component_hash: ad64de1d1b8aa139564810a8519b2f1ac275a560a512479ee94c1b6983469d4b
+    dependencies:
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: '*'
+    - name: idf
+      require: private
+      version: '>=4.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 4.2.0
+  espressif/cjson:
+    component_hash: e788323270d90738662d66fffa910bfe1fba019bba087f01557e70c40485b469
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 1.7.19~2
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 0.5.3
+  espressif/dl_fft:
+    component_hash: a955ca29581de2177ddf25759273bd83f082b3c805e735fe6ee105858643989b
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 0.6.0
+  espressif/esp-dsp:
+    component_hash: 12e44db246517a627bc0fe2b255b8335410c0215c98bfba2df5a8e3edea839ef
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.2'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 1.8.0
+  espressif/esp-sr:
+    component_hash: 809d0041cdddd98a278f0d5afef7bb60a451290577b98cf718dfffc91bdcbd9b
+    dependencies:
+    - name: espressif/cjson
+      registry_url: https://components.espressif.com
+      require: private
+      version: ^1.7.19
+    - name: espressif/dl_fft
+      registry_url: https://components.espressif.com
+      require: private
+      version: '>=0.6.0'
+    - name: espressif/esp-dsp
+      registry_url: https://components.espressif.com
+      require: private
+      version: 1.8.0
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 2.4.7
+  espressif/esp_codec_dev:
+    component_hash: 014948481bda426cd46714f297fe1891711246c62bea288863a8cc8cf13ef1f0
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.2.0
+  idf:
+    source:
+      type: idf
+    version: 5.4.2
+  libnmea:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\libnmea
+      type: local
+    version: 0.2.1
+  lr20xx:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\lr20xx
+      type: local
+    version: 1.0.0
+  lvgl/lvgl:
+    component_hash: 184e532558c1c45fefed631f3e235423d22582aafb4630f3e8885c35281a49ae
+    dependencies: []
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 9.5.0
+  meshpager_x2:
+    dependencies:
+    - name: esp_io_expander_tca6424
+      path: ../esp_io_expander_tca6424
+    - name: espressif/button
+      version: ^4.0.0
+    - name: espressif/esp-sr
+      version: 2.*
+    - name: espressif/esp_codec_dev
+      public: true
+      version: 1.2.*
+    - name: idf
+      version: '>=5.3'
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\meshpager_x2
+      type: local
+    targets:
+    - esp32s3
+    version: 0.0.1
+  nimble_peripheral_utils:
+    dependencies: []
+    source:
+      path: D:\esp_idf\542\frameworks\esp-idf-v5.4.2\examples\bluetooth\nimble\common\nimble_peripheral_utils
+      type: local
+    version: '*'
+  ping-cmd:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\ping-cmd
+      type: local
+    version: 1.0.0
+  wifi-cmd:
+    dependencies: []
+    source:
+      path: E:\esp\SenseCAP_MeshPager_X2\components\wifi-cmd
+      type: local
+    version: 0.1.10
+direct_dependencies:
+- bsp_extra
+- chmorgan/esp-audio-player
+- chmorgan/esp-file-iterator
+- esp-idf-lib/esp_idf_lib_helpers
+- esp-idf-lib/i2cdev
+- esp_io_expander_tca6424
+- espressif/button
+- espressif/cmake_utilities
+- espressif/esp-sr
+- espressif/esp_codec_dev
+- espressif/esp_io_expander
+- idf
+- libnmea
+- lr20xx
+- lvgl/lvgl
+- meshpager_x2
+- nimble_peripheral_utils
+- ping-cmd
+- wifi-cmd
+manifest_hash: 13d409625e86b0b36e5320ba60aa36f088f7280357d4c0a7b78f03853afa0b22
+target: esp32s3
+version: 2.0.0

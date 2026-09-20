@@ -1,0 +1,12 @@
+## IDF Component Manager Manifest File
+dependencies:
+  ## Required IDF version
+  idf:
+    version: ">=4.1.0"
+  lr20xx:
+    version: "*"
+    override_path: "../../../lr20xx"
+
+  esp_io_expander_tca6424:
+    version: "*"
+    override_path: "../../../esp_io_expander_tca6424"

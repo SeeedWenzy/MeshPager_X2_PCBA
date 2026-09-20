@@ -1,0 +1,61 @@
+menu "Full-Featured Runner"
+
+config RUNNER_MIN_PERIOD_MS
+    int "Minimum job period (ms)"
+    default 100
+    range 100 3600000
+    help
+        Floor enforced by the `period_set` console command.
+
+config RUNNER_PERIOD_DISPLAY_MS
+    int "Display (LCD) job period (ms)"
+    default 10000
+
+config RUNNER_PERIOD_AUDIO_MS
+    int "Audio (play/record) job period (ms)"
+    default 5000
+
+config RUNNER_PERIOD_WIFI_MS
+    int "Wi-Fi AP job period (ms)"
+    default 20000
+
+config RUNNER_PERIOD_BLE_MS
+    int "BLE advertising job period (ms)"
+    default 10000
+
+config RUNNER_PERIOD_GNSS_MS
+    int "GNSS NMEA job period (ms)"
+    default 5000
+
+config RUNNER_PERIOD_SENSOR_MS
+    int "Sensor (RTC/SHT4X/BMM350) job period (ms)"
+    default 2000
+
+config RUNNER_PERIOD_IMU_MS
+    int "IMU (LSM6DSOX accel/gyro) job period (ms)"
+    default 2000
+
+config RUNNER_PERIOD_LORA_TX_MS
+    int "LoRa TX job period (ms)"
+    default 3000
+
+config RUNNER_PERIOD_LORA_RX_MS
+    int "LoRa RX job period (ms)"
+    default 5000
+
+config RUNNER_PERIOD_SDCARD_MS
+    int "SD card r/w job period (ms)"
+    default 10000
+
+config RUNNER_PERIOD_BATTERY_MS
+    int "Battery ADC job period (ms)"
+    default 5000
+
+config RUNNER_LORA_RX_ENABLED_BY_DEFAULT
+    bool "LoRa RX job enabled at boot"
+    default y
+    help
+        LoRa TX and RX share one radio and serialize via a mutex, so both
+        may be enabled at the same time. Disable if you only want TX.
+
+endmenu

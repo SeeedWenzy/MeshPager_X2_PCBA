@@ -1,0 +1,1 @@
+void i2c_cmd_register_all(void);

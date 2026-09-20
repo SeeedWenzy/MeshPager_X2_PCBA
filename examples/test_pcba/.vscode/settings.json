@@ -1,0 +1,13 @@
+{
+    "idf.portWin": "COM310",
+    "idf.flashType": "UART",
+    "idf.openOcdConfigs": [
+        "board/esp32s3-builtin.cfg"
+    ],
+    "idf.customExtraVars": {
+        "IDF_TARGET": "esp32s3"
+    },
+    "idf.espIdfPathWin": "D:/esp_idf/542/frameworks/esp-idf-v5.4.2/",
+    "idf.toolsPathWin": "D:\\esp_idf\\542",
+    "idf.pythonInstallPath": "D:\\esp_idf\\542\\tools\\idf-python\\3.11.2\\python.exe"
+}

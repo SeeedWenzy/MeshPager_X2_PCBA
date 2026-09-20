@@ -1,0 +1,8 @@
+dependencies:
+  esp-idf-lib/esp_idf_lib_helpers:
+    version: '*'
+  esp-idf-lib/i2cdev:
+    version: '*'
+  idf:
+    version: '>=5.2.0'
+description: I2C sensor - Bosch BMM350 3-axis magnetometer(c)

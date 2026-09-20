@@ -1,0 +1,42 @@
+menu "Radio LR20XX"
+    menu "GPIO Config"
+        config RADIO_SPI_HOST
+            int "Radio LR20XX spi host value"
+            default 1
+            range 0 3
+        config RADIO_CS_GPIO
+            int "Radio LR20XX spi cs pin"
+            default 0
+        config RADIO_SCK_GPIO
+            int "Radio LR20XX spi sck pin"
+            default 3
+        config RADIO_MOSI_GPIO
+            int "Radio LR20XX spi mosi pin"
+            default 4
+        config RADIO_MISO_GPIO
+            int "Radio LR20XX spi miso pin"
+            default 5
+        config RADIO_BUSY_GPIO
+            int "Radio LR20XX busy pin"
+            default 8
+        config RADIO_INT_GPIO
+            int "Radio LR20XX interrupt pin"
+            default 7
+        config RADIO_RST_GPIO
+            int "Radio LR20XX reset pin"
+            default 10
+    endmenu
+    menu "IO Expander Config"
+        config RADIO_IO_EXPANDER_ENABLE
+            bool "Enable IO expander for Radio LR20XX"
+            default n
+        if RADIO_IO_EXPANDER_ENABLE
+            config RADIO_IO_EXPANDER_TYPE
+                string "IO expander type for Radio LR20XX"
+                default "tca6424"
+        config RADIO_IO_EXPANDER_RST_GPIO
+            int "Radio LR20XX IO expander reset pin"
+            default 22   
+        endif
+    endmenu
+endmenu
